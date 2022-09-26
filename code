@@ -1,0 +1,156 @@
+package CharacterSim;
+
+import java.util.Scanner;
+
+public class Character3 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Character3 character3 = new Character3("Gary", 100, 100, true);
+        Character3 character4 = new Character3("Steve", 100, 100, true);
+        character3.shot();
+        character3.shot();
+        System.out.println("Run 1 - includes Gary getting shot twice, resulting in losing 10 health ");
+        System.out.println(character3.toString());
+        System.out.println(character4.toString());
+        System.out.println("\n");
+        /*    System.out.println("How much more damage would you like to inflict?");
+        int damage = scanner.nextInt(); */
+        character3.shot(20);
+        System.out.println("Run 2 - has Gary losing 20 health ");
+        System.out.println(character3.toString());
+        System.out.println(character4.toString());
+        System.out.println("\n");
+        System.out.println("Run 3 - Gary loses 70 health, resulting in his death");
+        character3.shot(70);
+        System.out.println(character3.toString());
+        System.out.println(character4.toString());
+
+    }
+
+    private String name;
+    private int lifePoints;
+    private int weaponDamage;
+    private boolean alive;
+
+
+    public Character3(String characterName) {
+        //#1 - Modify the parameter to be the same name
+        this.name = characterName;
+        lifePoints = 100;
+        weaponDamage = 100;
+        alive = true;
+    }
+
+  
+    public Character3(String characterName, int lifePoints, int weaponDamage,
+            boolean alive) {
+        this.name = characterName;
+        this.lifePoints = 100;
+        this.weaponDamage = 100;
+        this.alive = true;
+    }
+
+    
+    public void shot() {
+        if (lifePoints >= 0) {
+            lifePoints = lifePoints - 5;
+        }
+        if (lifePoints <= 0) {
+            this.alive = false;
+//            System.out.println(name + "is dead!");
+        }
+    }
+    
+    public void shot(int damage) {
+        if (lifePoints >= 0) {
+            lifePoints -= damage;
+            this.alive = true;
+        }
+        if (lifePoints <= 0) {
+            this.alive = false;
+        }
+    }
+
+    public String getName() {
+        return name;
+
+    }
+
+    public int getlifePoints() {
+        return lifePoints;
+    }
+
+
+    public int getweaponDamage() {
+        return weaponDamage;
+    }
+
+  
+    public void isAlive() {
+        //#5 - Modify to check the Character3's life points
+        if (lifePoints >= 0) {
+            this.alive = true;
+        } else if (lifePoints <= 0) {
+            this.alive = false;
+            System.out.println("LOL" + name + "is dead!");
+
+        }
+
+    }
+
+ 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+  
+    public void setLifePoints(int points) {
+        if (points >= 1 && points <= 100) {
+            this.lifePoints = points;
+        } else {
+            System.out.println("Error: points must be in range [1 - 100]");
+        }
+    }
+
+
+    public void setWeaponDamage(int damage) {
+        this.weaponDamage = damage;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Character [name= " + name
+                + ", Life Points= " + lifePoints
+                + ", Weapon Damage= " + weaponDamage
+                + ", Character is " + (alive ? "alive." : "dead.") + "]";
+    }
+}
+
+class Game {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Character3 character3 = new Character3("Gary", 100, 100, true);
+        Character3 character4 = new Character3("Steve", 100, 100, true);
+        character3.shot();
+        character3.shot();
+        System.out.println("Run 1 - includes Gary getting shot twice, resulting in losing 10 health ");
+        System.out.println(character3.toString());
+        System.out.println(character4.toString());
+        System.out.println("\n");
+        /*    System.out.println("How much more damage would you like to inflict?");
+        int damage = scanner.nextInt(); */
+        character3.shot(20);
+        System.out.println("Run 2 - has Gary losing 20 health ");
+        System.out.println(character3.toString());
+        System.out.println(character4.toString());
+        System.out.println("\n");
+        System.out.println("Run 3 - Gary loses 70 health, resulting in his death");
+        character3.shot(70);
+        System.out.println(character3.toString());
+        System.out.println(character4.toString());
+    }
+
+}
